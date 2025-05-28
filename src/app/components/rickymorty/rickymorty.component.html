@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<tr></tr>
+<div class="container mt-4">
+  <h2 class="mb-3">Listado de Episodios</h2>
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Código</th>
+        <th>Fecha de emisión</th>
+        <th>Ver personajes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ep of episodios">
+        <td>{{ ep.name }}</td>
+        <td>{{ ep.episode }}</td>
+        <td>{{ ep.air_date }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="verPersonajes(ep)">Ver</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="personajes.length" class="mt-5">
+    <h3 class="mb-3">Personajes del episodio</h3>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col" *ngFor="let p of personajes">
+        <div class="card h-100 text-center">
+          <img [src]="p.image" class="card-img-top" alt="{{ p.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ p.name }}</h5>
+            <p class="card-text">{{ p.species }} - {{ p.status }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
